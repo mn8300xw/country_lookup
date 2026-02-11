@@ -11,7 +11,7 @@ def get_country_name(country_code):
         json_response = make_api_request(url)
         if not json_response:
             return False, None, None, None
-        name = get_name_from_response(json_response)
+        name = get_country_info_from_response(json_response)
         capital = get_capital_from_response(json_response)
         return True, name, capital, None
     except Exception:
@@ -31,7 +31,7 @@ def make_api_request(url):
     return json
 
 
-def get_name_from_response(json_response):
+def get_country_info_from_response(json_response):
     name = json_response[0]['name']['official']
     return name
 
