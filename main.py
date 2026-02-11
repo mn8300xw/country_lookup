@@ -7,9 +7,12 @@ def main():
         code = input('Enter country code or press enter to quit ')
         # TODO check code is 2 letters 
         # TODO end the loop if user presses enter
-        found, name, capital, error = country_api.get_country_name(code)
+        found, data, error = country_api.get_country_name(code)
 
         if found:
+            # `data` is a CountryInfo NamedTuple
+            name = data.official_name or data.common_name
+            capital = data.capital
             if capital:
                 print(f'{code} is the country code for {name} (capital: {capital})')
             else:
